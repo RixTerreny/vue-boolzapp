@@ -21,11 +21,11 @@
 
     <div id="app">
         <div class="d-flex flex-basis">
-            <aside class="d-flex flex-column">
+            <aside class="d-flex flex-column flex-shrink-0">
                 <div class="bg-body">
-                    <div class="d-flex justify-content-between p-1 bg-grey">
-                        <div class="d-flex align-items-center">
-                            <div class="resize-img">
+                    <div class="d-flex justify-content-between p-1 bg-grey border-end">
+                        <div class="d-flex align-items-center ">
+                            <div class="resize-img me-3">
                                 <img src="img/avatar_io.jpg" alt="" class="rounded-circle">
                             </div>
                             <h5 class="mb-0">Sofia</h5>
@@ -34,7 +34,7 @@
                         <div class="d-flex align-items-center fs-4 ">
                             <i class="fa-solid fa-circle-notch ms-3 grey"></i>
                             <i class="fa-solid fa-message ms-3 grey"></i>
-                            <i class="fa-solid fa-ellipsis-vertical mx-3 grey"></i>
+                            <i class="fa-solid fa-ellipsis-vertical ms-3 me-4 grey"></i>
                         </div>
                     </div>
                     <div class="notifiche d-flex p-2 align-items-center">
@@ -56,7 +56,7 @@
 
                 <div class="overflow-auto bg-body">
                     <div class="d-flex p-2 border-bottom">
-                        <div class="resize-img">
+                        <div class="resize-img me-2">
                             <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
                         </div>
                         <div class="w-100">
@@ -154,8 +154,36 @@
                 </div>
             </aside>
 
-            <div>
-                <div>
+            <div class="w-100">
+                <div class="d-flex justify-content-between p-1 bg-grey">
+                    <div class="d-flex align-items-center">
+                        <div class="resize-img me-3">
+                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle ">
+                        </div>
+                        <div>
+                            <h5 class="mb-0">Michele</h5>
+                        <div class="grey">Ultimo accesso oggi alle 12:00</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center fs-4 ">
+                        <i class="fa-solid fa-magnifying-glass grey"></i>
+                        <i class="fa-solid fa-paperclip grey ms-3"></i>
+                        <i class="fa-solid fa-ellipsis-vertical ms-3 me-4 grey"></i>
+                    </div>
+                </div>
+
+                <div class="message">
+                </div>
+
+                <div class="mb-3 p-2 d-flex align-items-center input-mess">
+                    <div class="fs-5 ms-3 me-4">
+                        <i class="fa-regular fa-face-smile grey"></i>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <div class="fs-5 ms-4 me-3">
+                        <i class="fa-solid fa-microphone grey"></i>
+                    </div>
                 </div>
             </div>
         </div>

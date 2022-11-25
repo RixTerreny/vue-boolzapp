@@ -62,3 +62,13 @@ aside{
 .notifiche i{
     color: #8edafc;
 }
+
+/* message */
+.message{
+    height: 85%;
+    background-image: url("../img/mine.jpg");
+}
+
+.input-mess{
+    background-color: #f3eeea;
+}
