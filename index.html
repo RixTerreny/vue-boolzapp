@@ -55,98 +55,14 @@
                 </div>
 
                 <div class="overflow-auto bg-body">
-                    <div class="d-flex p-2 border-bottom">
+                    <div class="d-flex p-2 border-bottom" v-for="(utente, i) in listaUtenti" @click.native="utenteSelezionato = utente" >
                         <div class="resize-img me-2">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
+                            <img :src="`img/avatar${utente.avatar}.jpg`" alt="" class="rounded-circle">
                         </div>
                         <div class="w-100">
                             <div class="d-flex justify-content-between">
-                                <h5 class="mb-0">Michele</h5>
-                                <span>12:00</span>
-                            </div>
-                            <div>Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <div class="d-flex p-2">
-                        <div class="resize-img">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
-                        </div>
-                        <div class="w-100">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0">Michele</h5>
-                                <span>12:00</span>
-                            </div>
-                            <div>Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <div class="d-flex p-2">
-                        <div class="resize-img">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
-                        </div>
-                        <div class="w-100">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0">Michele</h5>
-                                <span>12:00</span>
-                            </div>
-                            <div>Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <div class="d-flex p-2">
-                        <div class="resize-img">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
-                        </div>
-                        <div class="w-100">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0">Michele</h5>
-                                <span>12:00</span>
-                            </div>
-                            <div>Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <div class="d-flex p-2">
-                        <div class="resize-img">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
-                        </div>
-                        <div class="w-100">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0">Michele</h5>
-                                <span>12:00</span>
-                            </div>
-                            <div>Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <div class="d-flex p-2">
-                        <div class="resize-img">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
-                        </div>
-                        <div class="w-100">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0">Michele</h5>
-                                <span>12:00</span>
-                            </div>
-                            <div>Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <div class="d-flex p-2">
-                        <div class="resize-img">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
-                        </div>
-                        <div class="w-100">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0">Michele</h5>
-                                <span>12:00</span>
-                            </div>
-                            <div>Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <div class="d-flex p-2">
-                        <div class="resize-img">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle">
-                        </div>
-                        <div class="w-100">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0">Michele</h5>
-                                <span>12:00</span>
+                                <h5 class="mb-0">{{utente.name}}</h5>
+                                <span >{{utente.messages[utente.messages.length-1].date}}</span>
                             </div>
                             <div>Ultimo messaggio inviato</div>
                         </div>
@@ -158,11 +74,11 @@
                 <div class="d-flex justify-content-between p-1 bg-grey">
                     <div class="d-flex align-items-center">
                         <div class="resize-img me-3">
-                            <img src="img/avatar_1.jpg" alt="" class="rounded-circle ">
+                            <img :src="`img/avatar${utenteSelezionato.avatar}.jpg`" alt="" class="rounded-circle ">
                         </div>
                         <div>
-                            <h5 class="mb-0">Michele</h5>
-                        <div class="grey">Ultimo accesso oggi alle 12:00</div>
+                            <h5 class="mb-0">{{utenteSelezionato.name}}</h5>
+                        <div class="grey">Ultimo accesso {{utenteSelezionato.messages[utenteSelezionato.messages.length-1].date}}</div>
                         </div>
                     </div>
 
@@ -173,22 +89,27 @@
                     </div>
                 </div>
 
-                <div class="message">
+                <div class="message-holder p-3 overflow-auto">
+                    <div class="mb-1 col-12 d-flex "  v-for="(messaggio, i) in utenteSelezionato.messages" :class="(messaggio.status=='sent') ? 'justify-content-end':''">
+                        <div class="message flex-grow-0" :class="(messaggio.status=='sent') ? 'my-message':''">{{messaggio.message}}</div>
+                    </div>
                 </div>
 
-                <div class="mb-3 p-2 d-flex align-items-center input-mess">
-                    <div class="fs-5 ms-3 me-4">
-                        <i class="fa-regular fa-face-smile grey"></i>
+                <form action="">
+                    <div class="mb-3 p-2 d-flex align-items-center input-mess">
+                        <div class="fs-5 ms-3 me-4">
+                            <i class="fa-regular fa-face-smile grey"></i>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="messaggioScritto">
+                        <div class="fs-5 ms-4 me-3" @click="newMessage">
+                            <i class="fa-solid fa-microphone grey"></i>
+                        </div>
                     </div>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                    <div class="fs-5 ms-4 me-3">
-                        <i class="fa-solid fa-microphone grey"></i>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 
-    
+    <script src="js/main.js" type="module"></script>
 </body>
 </html>

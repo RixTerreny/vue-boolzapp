@@ -64,9 +64,20 @@ aside{
 }
 
 /* message */
-.message{
+.message-holder{
     height: 85%;
     background-image: url("../img/mine.jpg");
+}
+
+.message{
+    padding: 1rem;
+    background-color: white;
+    flex-grow: 0;
+    border-radius: 10px;
+}
+
+.my-message{
+    background-color: #d5f9ba;
 }
 
 .input-mess{
