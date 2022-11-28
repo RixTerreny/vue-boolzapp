@@ -1,20 +1,19 @@
 import listaUtenti from "./usersList.js";
 const { createApp } = Vue;
 
-let counter=0;
-
 const app = createApp({
     data() {
         return {
             listaUtenti,
-            utenteSelezionato: listaUtenti[counter],
-            messaggioScritto:""
+            utenteSelezionato: listaUtenti[0],
+            messaggioScritto:"",
+            input:""
         }
     },
     methods:{
         newMessage(){
 
-            if(this.typing == ""){
+            if(this.messaggioScritto == ""){
                 return
             }
             else{
@@ -33,6 +32,15 @@ const app = createApp({
                 }, 1000);
                 this.messaggioScritto=""
             }
+        },
+
+        
+    },
+    computed:{
+        listaFiltrata(){
+            return this.listaUtenti.filter(utente =>{
+                return utente.name.toLowerCase().includes(this.input.toLowerCase())
+            });
         }
     }
 }).mount('#app');
