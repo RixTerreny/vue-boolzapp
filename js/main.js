@@ -13,7 +13,11 @@ const app = createApp({
     },
     methods:{
         newMessage(){
-            if(this.typing !== ""){
+
+            if(this.typing == ""){
+                return
+            }
+            else{
                 this.utenteSelezionato.messages.push({
                     date: "12:00",
                     message: this.messaggioScritto,
@@ -28,8 +32,6 @@ const app = createApp({
                     });
                 }, 1000);
                 this.messaggioScritto=""
-            } else{
-                return
             }
         }
     }

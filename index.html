@@ -95,17 +95,16 @@
                     </div>
                 </div>
 
-                <form action="">
-                    <div class="mb-3 p-2 d-flex align-items-center input-mess">
-                        <div class="fs-5 ms-3 me-4">
-                            <i class="fa-regular fa-face-smile grey"></i>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="messaggioScritto">
-                        <div class="fs-5 ms-4 me-3" @click="newMessage">
-                            <i class="fa-solid fa-microphone grey"></i>
-                        </div>
+                
+                <div class="mb-3 p-2 d-flex align-items-center input-mess">
+                    <div class="fs-5 ms-3 me-4">
+                        <i class="fa-regular fa-face-smile grey"></i>
                     </div>
-                </form>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="messaggioScritto" @keyup.enter="newMessage">
+                    <div class="fs-5 ms-4 me-3">
+                        <i class="fa-solid fa-microphone grey"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
