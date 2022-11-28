@@ -34,7 +34,10 @@ const app = createApp({
             }
         },
 
-        
+        cancellaMessaggio(i){
+            this.utenteSelezionato.messages.splice(i,1);
+        }
+
     },
     computed:{
         listaFiltrata(){
@@ -44,4 +47,5 @@ const app = createApp({
         }
     }
 }).mount('#app');
+
 

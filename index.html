@@ -13,6 +13,8 @@
 
     <!-- Vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body class="d-flex justify-content-center align-items-center">
@@ -62,7 +64,7 @@
                         <div class="w-100">
                             <div class="d-flex justify-content-between">
                                 <h5 class="mb-0">{{utente.name}}</h5>
-                                <span >{{utente.messages[utente.messages.length-1].date}}</span>
+                                <span v-if="utente.messages.length > 0">{{utente.messages[utente.messages.length-1].date}}</span>
                             </div>
                             <div>Ultimo messaggio inviato</div>
                         </div>
@@ -78,7 +80,7 @@
                         </div>
                         <div>
                             <h5 class="mb-0">{{utenteSelezionato.name}}</h5>
-                        <div class="grey">Ultimo accesso {{utenteSelezionato.messages[utenteSelezionato.messages.length-1].date}}</div>
+                        <div class="grey" v-if="utenteSelezionato.messages.length >0">Ultimo accesso {{utenteSelezionato.messages[utenteSelezionato.messages.length-1].date}}</div>
                         </div>
                     </div>
 
@@ -91,7 +93,16 @@
 
                 <div class="message-holder p-3 overflow-auto">
                     <div class="mb-1 col-12 d-flex "  v-for="(messaggio, i) in utenteSelezionato.messages" :class="(messaggio.status=='sent') ? 'justify-content-end':''">
-                        <div class="message flex-grow-0" :class="(messaggio.status=='sent') ? 'my-message':''">{{messaggio.message}}</div>
+                        <div class="message flex-grow-0" :class="(messaggio.status=='sent') ? 'my-message':''">
+                            {{messaggio.message}}
+                            <div class="btn-group ">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle ms-1" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                <ul class="dropdown-menu">
+                                    <li class="ps-2" @click="cancellaMessaggio(i)">Cancella</li>
+                                </ul>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
